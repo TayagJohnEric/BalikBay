@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Link } from '@inertiajs/react';
+import { Link, usePage, router } from '@inertiajs/react'
 import { Menu, X, PackageSearch } from 'lucide-react';
 
 const navItems = [
@@ -33,6 +33,11 @@ function Logo() {
 
 export default function Navbar() {
     const [open, setOpen] = useState(false);
+    const { auth } = usePage().props
+   
+     const user = auth?.user;
+
+    
 
     return (
         <header className="sticky top-0 z-30 border-b border-stone-200 bg-[#FBF8F3]/95 backdrop-blur">
@@ -57,20 +62,35 @@ export default function Navbar() {
                     ))}
                 </ul>
 
-                <div className="hidden items-center gap-2 md:flex">
-                    <Link
-                        href={links.login}
-                        className="px-3 py-2 text-sm font-semibold text-stone-900 hover:text-orange-700"
-                    >
-                        Log in
-                    </Link>
+               <div className="hidden items-center gap-2 md:flex">
+                    {user ? (
+                        <>
+                            <button
+                                type="button"
+                                onClick={() => router.post('/logout')}
+                                className="px-3 py-2 text-sm font-semibold text-stone-900 hover:text-orange-700"
+                            >
+                                Log out
+                            </button>
+                            <p>Welcome, {auth.user.name}!</p>
+                        </>
+                    ) : (
+                        <>
+                            <Link
+                                href={links.login}
+                                className="px-3 py-2 text-sm font-semibold text-stone-900 hover:text-orange-700"
+                            >
+                                Log in
+                            </Link>
 
-                    <Link
-                        href={links.register}
-                        className={`${btn.base} ${btn.primary}`}
-                    >
-                        Get started
-                    </Link>
+                            <Link
+                                href={links.register}
+                                className={`${btn.base} ${btn.primary}`}
+                            >
+                                Get started
+                            </Link>
+                        </>
+                    )}
                 </div>
 
                 <button

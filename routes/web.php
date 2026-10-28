@@ -2,10 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
+
 
 
 Route::get('/', function () {
-    return inertia('Home');
+    return inertia('LandingPage');
 });
 
 
@@ -23,3 +25,9 @@ Route::middleware('guest')->group(function () {
 
 Route::post('/logout', [AuthController::class, 'logout'])
     ->middleware('auth');
+
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])
+    ->middleware('auth');
+
+
+    
