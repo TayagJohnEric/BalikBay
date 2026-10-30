@@ -1,5 +1,5 @@
 
-import UserLayout from '../Layouts/UserLayout.jsx'
+import MainLayout from '../Layouts/MainLayout.jsx'
 import {
     FileSearch,
     PackageCheck,
@@ -104,7 +104,7 @@ const display = "font-['Bricolage_Grotesque',ui-sans-serif,sans-serif]";
 
 export default function Dashboard() {
     return (
-        <UserLayout>
+        <MainLayout>
             <div className="min-h-screen overflow-x-hidden bg-page text-stone-900 antialiased">
                 <div className="mx-auto max-w-6xl space-y-8 px-4 py-8 sm:px-6 lg:py-10">
 
@@ -402,6 +402,6 @@ export default function Dashboard() {
 
                 </div>
             </div>
-        </UserLayout>
+        </MainLayout>
     )
 }

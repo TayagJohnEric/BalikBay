@@ -13,7 +13,7 @@ Route::get('/', function () {
 
 Route::get('/items', function () {
     return inertia('Items/Index');
-});
+})->middleware('auth');;
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin']);
@@ -30,4 +30,6 @@ Route::get('/dashboard', [DashboardController::class, 'dashboard'])
     ->middleware('auth');
 
 
-    
+    Route::get('/test', function () {
+    return inertia('Test');
+});

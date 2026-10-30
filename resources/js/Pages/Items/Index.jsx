@@ -1,5 +1,5 @@
 
-import UserLayout from '../../Layouts/UserLayout.jsx'
+import MainLayout from '../../Layouts/MainLayout.jsx'
 import {
     Search,
     MapPin,
@@ -56,7 +56,7 @@ const display = "font-['Bricolage_Grotesque',ui-sans-serif,sans-serif]";
 
 export default function Index() {
     return (
-        <UserLayout>
+        <MainLayout>
             <div className="min-h-screen overflow-x-hidden bg-page text-stone-900 antialiased">
                 <div className="mx-auto w-full max-w-6xl space-y-8 px-4 py-8 sm:px-6 lg:py-10">
 
@@ -338,6 +338,6 @@ export default function Index() {
                     </section>
                 </div>
             </div>
-        </UserLayout>
+        </MainLayout>
     )
 }
